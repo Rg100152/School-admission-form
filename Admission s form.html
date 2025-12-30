@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Admission Form (9th to 12th)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        :root {
+            --primary: #ff5722;
+            --secondary: #7b1fa2;
+            --dark: #121212;
+            --dark-light: #1e1e1e;
+            --text: #e0e0e0;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-bottom: 2px solid var(--primary);
+            width: 100%;
+        }
+        
+        h1 {
+            font-size: 4.5rem;
+            color: var(--primary);
+            text-shadow: 0 0 15px rgba(255, 87, 34, 0.5);
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        
+        .hero-section {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .form-container {
+            background: rgba(30, 30, 46, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 25px rgba(255, 87, 34, 0.2);
+            margin-bottom: 30px;
+            width: 100%;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, select:focus {
+            outline: 2px solid var(--primary);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .checkbox-item, .radio-item {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .checkbox-item:hover, .radio-item:hover {
+            background: rgba(255, 87, 34, 0.2);
+        }
+        
+        .checkbox-item input, .radio-item input {
+            margin-right: 8px;
+            accent-color: var(--primary);
+        }
+        
+        button {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(123, 31, 162, 0.3);
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(123, 31, 162, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .admission-info {
+            text-align: center;
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(255, 87, 34, 0.1);
+            border-radius: 15px;
+            width: 100%;
+        }
+        
+        .admission-info h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .admission-info p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #b0b0b0;
+            border-top: 1px solid #333;
+            width: 100%;
+        }
+        
+        .confirmation {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 200, 83, 0.1);
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 4px solid #00c853;
+        }
+        
+        .confirmation.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .countdown-item {
+            background: rgba(255, 87, 34, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            min-width: 80px;
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-section {
+                flex-direction: column;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+            
+            .checkbox-group, .radio-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .checkbox-item, .radio-item {
+                width: 100%;
+            }
+            
+            .countdown {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Admission Form</h1>
+            <p class="subtitle">प्रवेश पत्र (कक्षा 9 से 12) | Class Admission Form (9th to 12th)</p>
+        </header>
+        
+        <div class="hero-section">
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="School Admission">
+            </div>
+            <div class="hero-content">
+                <h2>कक्षा 9 से 12 में प्रवेश लें! | Join Classes 9 to 12!</h2>
+                <p>हम कक्षा 9 से 12 के लिए प्रवेश प्रक्रिया शुरू करने के लिए उत्साहित हैं। अभी पंजीकरण करें और अपने शैक्षिक भविष्य को सुरक्षित करें।<br>
+                We are excited to start the admission process for classes 9 to 12. Register now to secure your academic future.</p>
+                
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">00</div>
+                        <div class="countdown-label">Days | दिन</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">00</div>
+                        <div class="countdown-label">Hours | घंटे</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">00</div>
+                        <div class="countdown-label">Minutes | मिनट</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="seconds">00</div>
+                        <div class="countdown-label">Seconds | सेकंड</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-container">
+            <form id="admissionForm">
+                <div class="form-group">
+                    <label for="name"><i class="fas fa-user"></i> नाम (आईडी के अनुसार) | Name (as per ID):</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your name as per ID">
+                </div>
+                
+                <div class="form-group">
+                    <label for="fullname"><i class="fas fa-id-card"></i> पूरा नाम | Full Name:</label>
+                    <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> ई-मेल | E-mail:</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                </div>
+                
+                <div class="form-group">
+                    <label for="mobile"><i class="fas fa-phone"></i> मोबाइल नंबर | Mobile Number:</label>
+                    <input type="tel" id="mobile" name="mobile" required placeholder="Enter your mobile number">
+                </div>
+                
+                <div class="form-group">
+                    <label for="age"><i class="fas fa-birthday-cake"></i> आयु | Age:</label>
+                    <input type="number" id="age" name="age" min="13" max="20" required placeholder="Enter your age">
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-graduation-cap"></i> प्रवेश के लिए कक्षा | Class for Admission:</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="class9" name="class" value="9" required>
+                            <label for="class9">कक्षा 9 | Class 9</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="class10" name="class" value="10">
+                            <label for="class10">कक्षा 10 | Class 10</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="class11" name="class" value="11">
+                            <label for="class11">कक्षा 11 | Class 11</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="class12" name="class" value="12">
+                            <label for="class12">कक्षा 12 | Class 12</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="stream"><i class="fas fa-book"></i> स्ट्रीम (कक्षा 11 और 12 के लिए) | Stream (for Classes 11 & 12):</label>
+                    <select id="stream" name="stream">
+                        <option value="">-- स्ट्रीम चुनें | Select Stream --</option>
+                        <option value="science">विज्ञान | Science</option>
+                        <option value="commerce">वाणिज्य | Commerce</option>
+                        <option value="arts">कला | Arts</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="previousSchool"><i class="fas fa-school"></i> पिछला स्कूल | Previous School:</label>
+                    <input type="text" id="previousSchool" name="previousSchool" required placeholder="Enter your previous school name">
+                </div>
+                
+                <button type="submit"><i class="fas fa-paper-plane"></i> फॉर्म जमा करें | Submit Form</button>
+            </form>
+            
+            <div id="confirmation" class="confirmation">
+                <h3><i class="fas fa-check-circle"></i> धन्यवाद! | Thank You!</h3>
+                <p>आपका फॉर्म सफलतापूर्वक जमा हो गया है। पुष्टि के लिए एक ईमेल admissions@school.com को भेजा गया है।<br>
+                Your form has been submitted successfully. An email has been sent to admissions@school.com.</p>
+            </div>
+        </div>
+        
+        <div class="admission-info">
+            <h2>प्रवेश जानकारी | Admission Information</h2>
+            <p><i class="fas fa-calendar-alt"></i> अंतिम तिथि | Deadline: October 15, 2025</p>
+            <p><i class="fas fa-map-marker-alt"></i> स्थान | Venue: School Admission Office</p>
+            <p><i class="fas fa-clock"></i> समय | Time: 9:00 AM to 5:00 PM</p>
+            <p>हमारे स्कूल में शामिल हों और उत्कृष्ट शिक्षा और अवसरों का हिस्सा बनें!<br>
+            Join our school and be a part of excellent education and opportunities!</p>
+        </div>
+        
+        <footer>
+            <p>© 2025 School Admission | admissions@school.com</p>
+        </footer>
+    </div>
+
+    <script>
+        // Set the date we're counting down to (admission deadline)
+        const deadlineDate = new Date("Oct 15, 2025 23:59:59").getTime();
+        
+        // Update the countdown every 1 second
+        const countdownFunction = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = deadlineDate - now;
+            
+            // Calculate days, hours, minutes and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            // Display the results
+            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+            
+            // If the countdown is over, write some text
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.querySelector(".countdown").innerHTML = "प्रवेश की समय सीमा समाप्त हो गई है! | Admission deadline has expired!";
+            }
+        }, 1000);
+        
+        document.getElementById('admissionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic validation
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const mobile = document.getElementById('mobile').value;
+            const classSelected = document.querySelector('input[name="class"]:checked');
+            const stream = document.getElementById('stream').value;
+            
+            if (!classSelected) {
+                alert('कृपया अपनी कक्षा चुनें। | Please select your class.');
+                return;
+            }
+            
+            if ((classSelected.value === '11' || classSelected.value === '12') && !stream) {
+                alert('कृपया स्ट्रीम चुनें। | Please select a stream.');
+                return;
+            }
+            
+            // Simulate form submission and email sending
+            setTimeout(() => {
+                document.getElementById('confirmation').classList.add('show');
+                document.getElementById('admissionForm').reset();
+                
+                // Scroll to confirmation message
+                document.getElementById('confirmation').scrollIntoView({ behavior: 'smooth' });
+                
+                // Hide confirmation after 5 seconds
+                setTimeout(() => {
+                    document.getElementById('confirmation').classList.remove('show');
+                }, 5000);
+            }, 1000);
+        });
+        
+        // Disable stream selection for classes 9 and 10
+        document.querySelectorAll('input[name="class"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const streamSelect = document.getElementById('stream');
+                if (this.value === '9' || this.value === '10') {
+                    streamSelect.value = '';
+                    streamSelect.disabled = true;
+                } else {
+                    streamSelect.disabled = false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
